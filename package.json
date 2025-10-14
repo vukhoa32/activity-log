@@ -4,5 +4,8 @@
   "workspaces": [
     "frontend",
     "backend/functions"
-  ]
+  ],
+  "scripts": {
+    "frontend": "yarn workspace frontend dev"
+  }
 }
