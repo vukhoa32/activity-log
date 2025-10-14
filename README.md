@@ -10,3 +10,4 @@ TODO list:
 - [ ] Impl feature: View log by table
 - [ ] Impl feature: Sort table by fields
 - [ ] Impl feature: Separte logs by months, weeks
+- [ ] Impl feature: Login form

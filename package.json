@@ -1,0 +1,8 @@
+{
+  "name": "activity-log-monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend/functions"
+  ]
+}
