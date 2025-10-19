@@ -6,6 +6,13 @@
     "backend/functions"
   ],
   "scripts": {
-    "frontend": "yarn workspace frontend dev"
+    "frontend": "yarn workspace frontend dev",
+    "backend:build": "cd backend/functions && npm run build",
+    "backend:watch": "cd backend/functions && npm run watch",
+    "backend:emulator": "firebase emulators:start --only functions,firestore",
+    "backend": "npm run backend:build && concurrently \"npm run backend:watch\" \"npm run backend:emulator\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
   }
 }
