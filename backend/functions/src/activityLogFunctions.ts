@@ -53,3 +53,38 @@ export const createActivityLog = functions.https.onRequest(async (request, respo
     response.status(500).json({ error: 'Failed to create activity log' });
   }
 });
+
+export const getActivityLogs = functions.https.onRequest(async (request, response) => {
+  response.set('Access-Control-Allow-Origin', '*');
+  response.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  response.set('Access-Control-Allow-Headers', 'Content-Type');
+  
+  if (request.method === 'OPTIONS') {
+    response.status(204).send('');
+    return;
+  }
+
+  if (request.method !== 'GET') {
+    response.status(405).send('Method Not Allowed');
+    return;
+  }
+
+  try {
+    const snapshot = await db.collection('activityLogs')
+      .orderBy('timestamp', 'desc')
+      .get();
+    
+    const activityLogs = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    response.status(200).json({
+      activityLogs,
+      count: activityLogs.length
+    });
+  } catch (error) {
+    console.error('Error fetching activity logs:', error);
+    response.status(500).json({ error: 'Failed to fetch activity logs' });
+  }
+});

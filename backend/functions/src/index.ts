@@ -17,4 +17,4 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 });
 
 export { createActivityType, getActivityTypes } from "./activityTypeFunctions";
-export { createActivityLog } from "./activityLogFunctions";
+export { createActivityLog, getActivityLogs } from "./activityLogFunctions";
