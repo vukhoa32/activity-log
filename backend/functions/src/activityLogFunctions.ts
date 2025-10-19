@@ -33,8 +33,6 @@ export const createActivityLog = functions.https.onRequest(async (request, respo
       return;
     }
 
-    const activityTypeDoc = activityTypesSnapshot.docs[0];
-
     const logData: Omit<ActivityLogDocument, 'createdAt'> = {
       activityTypeId, // Store the custom id, not Firestore doc id
       data,

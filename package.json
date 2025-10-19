@@ -9,8 +9,9 @@
     "frontend": "yarn workspace frontend dev",
     "backend:build": "cd backend/functions && npm run build",
     "backend:watch": "cd backend/functions && npm run watch",
-    "backend:emulator": "firebase emulators:start --only functions,firestore",
-    "backend": "npm run backend:build && concurrently \"npm run backend:watch\" \"npm run backend:emulator\""
+    "backend:emulator": "firebase emulators:start --only functions,firestore --import=./emulator-seed-data --export-on-exit=./emulator-data",
+    "backend": "npm run backend:build && concurrently \"npm run backend:watch\" \"npm run backend:emulator\"",
+    "backend:seed": "firebase emulators:export ./emulator-seed-data"
   },
   "devDependencies": {
     "concurrently": "^8.0.0"

@@ -21,3 +21,20 @@ Fancy TODO list:
 - [ ] Impl feature: Analyze emotion based on input text, using tensorflow
 - [ ] Idea: using AI for personalize experience
 - [ ] Idea: build experience for mobile
+
+## Emulator Data Management
+
+**Seed Data (committed to git):**
+- Location: `emulator-seed-data/`
+- Contains initial data for development
+- Loaded when starting the emulator
+
+**Runtime Data (not committed):**
+- Location: `emulator-data/`
+- Persists between emulator sessions
+- Auto-saved when stopping the emulator
+
+**To update seed data:**
+1. Run the emulator and add/modify data
+2. Run `yarn backend:seed` to export runtime data to seed data
+3. Commit the updated `emulator-seed-data/` directory
